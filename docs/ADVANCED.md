@@ -41,11 +41,11 @@ export { handler as GET, handler as POST };
 
 ## Options
 
-`createMcpHandler` takes a single options object: the SDK's `ServerOptions`
-(capabilities, instructions, ...) plus handler-level extras.
+`createMcpHandler` takes a single options object: the SDK's `McpServer` options
+(capabilities, instructions, `maxToolInputElements`, ...) plus handler-level extras.
 
 ```typescript
-type McpHandlerOptions = ServerOptions & {
+type McpHandlerOptions = McpServerOptions & {
   serverInfo?: { name: string; version: string }; // Reported to clients during initialization
   verboseLogs?: boolean; // Enable debug logging
   onEvent?: (event: McpEvent) => void; // Analytics/debugging callback

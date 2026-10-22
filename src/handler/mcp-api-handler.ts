@@ -2,7 +2,6 @@ import {
   createMcpHandler as createSdkMcpHandler,
   McpServer,
   type CreateMcpHandlerOptions as SdkMcpHandlerOptions,
-  type ServerOptions as McpServerOptions,
 } from "@modelcontextprotocol/server";
 import type {
   McpEvent,
@@ -17,9 +16,11 @@ import {
 
 export type WebMcpOptions = Omit<WebMcpScriptHandlerOptions, "endpoint">;
 
+type McpServerOptions = NonNullable<ConstructorParameters<typeof McpServer>[1]>;
+
 /**
- * Options for the MCP handler: the SDK's `ServerOptions` (capabilities,
- * instructions, ...) plus handler-level extras.
+ * Options for the MCP handler: the SDK's `McpServer` options (capabilities,
+ * instructions, `maxToolInputElements`, ...) plus handler-level extras.
  */
 export type McpHandlerOptions = McpServerOptions & {
   /**
